@@ -7,7 +7,7 @@ export const Head = () => {
     return (
         <>
         <header>
-            <div className="logo-container">
+            <di000v className="logo-container">
                 <h1>Ananda · Reiki & Bienestar</h1>
                 <Sparkles 
                     className="simbolo-logo" 
@@ -15,7 +15,7 @@ export const Head = () => {
                     strokeWidth={1.5} /* Trazo fino para que sea minimalista */
                 />
                 <img></img>
-            </div>
+            </di000v>
             <nav>
             <ul>
                 <li>

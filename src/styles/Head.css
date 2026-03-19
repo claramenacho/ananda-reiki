@@ -31,9 +31,27 @@ header {
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 12px; /* Espacio sutil entre el nombre y el detalle visual */
+  gap: 8px; /* Espacio sutil entre el nombre y el detalle visual */
+}
+/* Estilo para el icono de Lucide */
+.simbolo-logo {
+  /* Usamos el mismo verde agua pero muy clarito */
+  color: #83bca9; 
+  
+  /* MARCA DE AGUA: Opacidad muy baja para que sea sutil */
+  opacity: 0.2; 
+  
+  /* Animación suave para que no sea agresivo */
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Efecto Zen: Cuando pasás el mouse por el nombre Ananda */
+.logo-container:hover .simbolo-logo {
+  opacity: 0.6;
+  transform: rotate(15deg) scale(1.1);
+  /* Un pequeño resplandor sutil */
+  filter: drop-shadow(0 0 5px rgba(131, 188, 169, 0.3));
+}
 header h1 {
   /* ACÁ VA TU FUENTE: Cambiá 'NombreDeTuFuente' por el nombre exacto de Google Fonts */
   font-family: 'Roboto Flex', sans-serif; /* Usamos la versión Flex */ 
