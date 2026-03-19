@@ -1,0 +1,102 @@
+/* =========================================
+   1. Reseteo y Configuración Base
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* Usamos una tipografía limpia para el cuerpo, dejando la especial para el logo */
+  font-family: 'Roboto', sans-serif;
+  background-color: #fdfcf9; /* Blanco hueso/crema muy relajante */
+  color: #4a4a4a;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased; /* Suaviza la renderización de las letras */
+}
+
+/* =========================================
+   2. Header (Contenedor Principal)
+   ========================================= */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 6%; /* Mucho aire lateral para que el diseño respire */
+  background-color: transparent; /* O podés usar #ffffff si preferís que resalte */
+}
+
+/* Contenedor del Logo (Texto + Imagen sutil) */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Espacio sutil entre el nombre y el detalle visual */
+}
+
+header h1 {
+  /* ACÁ VA TU FUENTE: Cambiá 'NombreDeTuFuente' por el nombre exacto de Google Fonts */
+  font-family: 'Roboto Flex', sans-serif; /* Usamos la versión Flex */ 
+  font-size: 2.2rem;
+  font-variation-settings: "wdth" 120;
+  font-weight: 400; /* Fina y elegante */
+  letter-spacing: 2px; /* Separación entre letras para estilo zen */
+  color: #83bca9; /* Verde agua suave que definimos antes */
+  cursor: default;
+}
+
+/* Detalle visual sutil (el logo minimalista) */
+header img {
+  height: 28px; /* Tamaño pequeño para que no compita con el nombre */
+  width: auto;
+  opacity: 0.7; /* Lo hacemos un poquito traslúcido para que sea más suave */
+  transition: transform 0.8s ease;
+}
+
+/* Efecto zen al pasar el mouse por el logo */
+.logo-container:hover img {
+  transform: rotate(10deg) scale(1.05); /* Un movimiento muy leve, como un suspiro */
+}
+
+/* =========================================
+   3. Navegación (Menú)
+   ========================================= */
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 40px; /* Espacio generoso entre secciones */
+}
+
+nav h2 {
+  font-size: 0.95rem; /* Tamaño pequeño y discreto */
+  font-weight: 500;
+  color: #7a7a7a;
+  text-transform: uppercase; /* Todo en mayúsculas da un aire de orden y seguridad */
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+/* Efecto de subrayado sutil al pasar el mouse */
+nav h2:hover {
+  color: #83bca9;
+}
+
+/* Opcional: una marquita debajo del menú al hacer hover */
+nav h2::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 1px;
+  background: #83bca9;
+  transition: width 0.4s;
+  margin-top: 4px;
+}
+
+nav h2:hover::after {
+  width: 100%;
+}
+
+
+

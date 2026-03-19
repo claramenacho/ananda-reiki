@@ -1,0 +1,68 @@
+/* =========================================
+   Sección Hero (Fondo con degradado Zen)
+   ========================================= */
+.hero {
+  /* Creamos un degradado suave: 
+     Empieza en un blanco crema y termina en un verde agua casi transparente */
+  background: linear-gradient(135deg, #fdfcf9 0%, #f4faf8 100%);
+  
+  min-height: 75vh; /* Ocupa el 75% de la pantalla para dar aire */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10%;
+  
+  /* Agregamos una transición suave por si después queremos animar algo */
+  transition: all 0.5s ease;
+}
+
+.hero-content {
+  max-width: 800px;
+  text-align: center;
+  /* Animación de entrada suave para el texto */
+  animation: fadeIn 1.5s ease-out;
+}
+
+/* El mensaje principal */
+.hero-content h2 {
+  font-family: 'Roboto Flex', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem); /* Se adapta al tamaño de pantalla */
+  font-weight: 300;
+  color: #83bca9;
+  margin-bottom: 25px;
+  letter-spacing: -0.5px;
+}
+
+/* El subtítulo */
+.hero-content p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  color: #7a7a7a;
+  margin-bottom: 40px;
+  line-height: 1.8;
+  font-weight: 300;
+}
+.btn-hero {
+  background-color: #83bca9;
+  color: white;
+  padding: 16px 45px;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(131, 188, 169, 0.2); /* Sombra del mismo color verde */
+  transition: all 0.3s ease;
+}
+
+.btn-hero:hover {
+  transform: translateY(-3px); /* Se eleva un poquito al pasar el mouse */
+  box-shadow: 0 15px 25px rgba(131, 188, 169, 0.3);
+}
+
+/* Animación simple de aparición */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
