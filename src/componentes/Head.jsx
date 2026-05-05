@@ -1,44 +1,38 @@
 import React from "react"
 import '../styles/Head.css'
 import { Sparkles } from "lucide-react"
+import { NavLink } from 'react-router-dom'; // <--- Cambiamos Link por NavLink
 
 export const Head = () => {
+    // Definimos una función pequeñita para no repetir código en cada li
+    const activeClass = ({ isActive }) => (isActive ? "nav-link active" : "nav-link");
 
     return (
-        <>
         <header>
-            <di000v className="logo-container">
+            <div className="logo-container">
                 <h1>Ananda · Reiki & Bienestar</h1>
                 <Sparkles 
                     className="simbolo-logo" 
                     size={20} 
-                    strokeWidth={1.5} /* Trazo fino para que sea minimalista */
+                    strokeWidth={1.5} 
                 />
-                <img></img>
-            </di000v>
+            </div>
             <nav>
-            <ul>
-                <li>
-                    <h2>Inicio</h2>
-                </li>
-                <li>
-                    <h2>¿Que es Reiki?</h2>
-                </li>
-                <li>
-                    <h2>Seciones/ Servicios</h2>
-                </li>
-                <li>
-                    <h2>Contacto</h2>
-                </li>
-
-            </ul>
-            
-
-            
-        </nav>
+                <ul>
+                    <li>
+                        <NavLink to="/" className={activeClass}>Inicio</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/queesreiki" className={activeClass}>¿Qué es Reiki?</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/reiki" className={activeClass}>Sesiones</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/contacto" className={activeClass}>Contacto</NavLink>
+                    </li>
+                </ul>
+            </nav>
         </header>
-        
-        </>
     )
-
 }

@@ -1,0 +1,159 @@
+/* 1. Contenedor Principal */
+.reiki-page {
+    position: relative;
+    padding-top: 120px;
+    background-color: #fdfcf9;
+    min-height: 100vh;
+    overflow: hidden; /* Evita scrolls raros por la imagen grande */
+}
+
+/* 2. Marca de Agua a Ancho Completo */
+.reiki-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    background-image: url('https://images.pexels.com/photos/26730566/pexels-photo-26730566.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+    /* Mantenemos la opacidad sutil */
+    opacity: 0.12; 
+    filter: grayscale(100%) brightness(0.95);
+    
+    /* LA CLAVE: Máscara de desvanecimiento */
+    /* Esto crea un degradado radial: sólido en el centro y transparente en los bordes */
+    mask-image: radial-gradient(circle, black 40%, transparent 90%);
+    -webkit-mask-image: radial-gradient(circle, black 40%, transparent 90%);
+    
+    z-index: 0;
+    pointer-events: none;
+    background-attachment: fixed;
+}
+
+/* 3. Estructura de Contenido (Z-index para que flote arriba) */
+.reiki-header, 
+.reiki-intro, 
+.reiki-benefits {
+    position: relative;
+    z-index: 1;
+}
+
+.reiki-header {
+    text-align: center;
+    padding: 60px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.reiki-header h1 {
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 200;
+    font-size: clamp(2.5rem, 6vw, 3.8rem);
+    color: #83bca9;
+    margin-bottom: 20px;
+}
+
+/* ... Resto de tus estilos (cards, disclaimer, etc.) se mantienen igual ... */
+
+.reiki-header p {
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 300;
+    color: #666;
+    font-size: 1.3rem;
+}
+
+/* 5. Secciones de Contenido */
+.reiki-container {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    padding: 80px 10%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.reiki-text h2 {
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 400;
+    color: #444;
+    margin-bottom: 30px;
+}
+
+.reiki-text p {
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.reiki-image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 40px; /* Bordes más suaves */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+/* 6. Tarjetas de Beneficios */
+.reiki-benefits {
+    padding: 100px 10%;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.benefit-card {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 28px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-8px);
+}
+
+/* 7. Disclaimer Legal */
+.reiki-disclaimer {
+    padding: 80px 10%;
+    background-color: #ffffff;
+}
+
+.disclaimer-container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 35px;
+    border-radius: 20px;
+    border: 1px solid #83bca922;
+    background-color: #f4faf822;
+    text-align: center;
+}
+
+/* 8. Responsive */
+@media (max-width: 1024px) {
+    .reiki-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 50px;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .reiki-page::before {
+        width: 400px;
+        height: 400px;
+    }
+}

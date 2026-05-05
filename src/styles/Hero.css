@@ -1,68 +1,206 @@
 /* =========================================
-   Sección Hero (Fondo con degradado Zen)
+   Configuración General y Fuentes
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+
+/* Unificamos el fondo global para que no haya parches blancos */
+body {
+    background-color: #faf9f6;
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================================
+   Sección Hero (Imagen Zen Suavizada)
    ========================================= */
 .hero {
-  /* Creamos un degradado suave: 
-     Empieza en un blanco crema y termina en un verde agua casi transparente */
-  background: linear-gradient(135deg, #fdfcf9 0%, #f4faf8 100%);
-  
-  min-height: 75vh; /* Ocupa el 75% de la pantalla para dar aire */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 10%;
-  
-  /* Agregamos una transición suave por si después queremos animar algo */
-  transition: all 0.5s ease;
+    position: relative;
+    min-height: 90vh; /* Aumentamos para que luzca la imagen */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10%;
+    overflow: hidden;
+    /* Eliminamos el background-image de aquí para usar el pseudo-elemento */
+}
+
+/* Usamos ::before para la imagen: permite aplicar la máscara sin afectar al texto */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://images.pexels.com/photos/6962648/pexels-photo-6962648.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+    /* 1. SUAVIZADO TOTAL: Máscara para bordes superior e inferior */
+    mask-image: linear-gradient(
+        to bottom, 
+        transparent 0%, 
+        black 15%, 
+        black 85%, 
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to bottom, 
+        transparent 0%, 
+        black 15%, 
+        black 85%, 
+        transparent 100%
+    );
+
+    /* 2. ESTILO ZEN: Muy tenue y grisáceo */
+    opacity: 0.11; 
+    filter: grayscale(100%) brightness(1.1);
+    z-index: 0;
 }
 
 .hero-content {
-  max-width: 800px;
-  text-align: center;
-  /* Animación de entrada suave para el texto */
-  animation: fadeIn 1.5s ease-out;
+    max-width: 800px;
+    text-align: center;
+    animation: fadeIn 1.5s ease-out;
+    position: relative; 
+    z-index: 1; /* Por encima de la imagen */
 }
 
-/* El mensaje principal */
 .hero-content h2 {
-  font-family: 'Roboto Flex', sans-serif;
-  font-size: clamp(2rem, 5vw, 3.5rem); /* Se adapta al tamaño de pantalla */
-  font-weight: 300;
-  color: #83bca9;
-  margin-bottom: 25px;
-  letter-spacing: -0.5px;
+    font-family: 'Roboto Flex', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 200; /* Más fino como te gusta */
+    color: #659182; 
+    margin-bottom: 25px;
+    letter-spacing: -0.5px;
 }
 
-/* El subtítulo */
 .hero-content p {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.2rem;
-  color: #7a7a7a;
-  margin-bottom: 40px;
-  line-height: 1.8;
-  font-weight: 300;
+    font-family: 'Roboto Flex', sans-serif;
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 40px;
+    line-height: 1.8;
+    font-weight: 300;
 }
+
+/* Botón de Acción Principal */
 .btn-hero {
-  background-color: #83bca9;
-  color: white;
-  padding: 16px 45px;
-  border: none;
-  border-radius: 50px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  cursor: pointer;
-  box-shadow: 0 10px 20px rgba(131, 188, 169, 0.2); /* Sombra del mismo color verde */
-  transition: all 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+    background-color: #83bca9;
+    color: white; /* Corregido el color para legibilidad */
+    padding: 16px 45px;
+    border-radius: 50px;
+    font-family: 'Roboto Flex', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(131, 188, 169, 0.2);
+    transition: all 0.3s ease;
 }
 
 .btn-hero:hover {
-  transform: translateY(-3px); /* Se eleva un poquito al pasar el mouse */
-  box-shadow: 0 15px 25px rgba(131, 188, 169, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(131, 188, 169, 0.3);
+    background-color: #72a998;
 }
 
-/* Animación simple de aparición */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+/* =========================================
+   Sección de Pilares (Features)
+   ========================================= */
+.features-section {
+    position: relative;
+    padding: 100px 20px; 
+    background-color: transparent; /* Para que se vea el fondo tenue del body */
+    text-align: center;
+    z-index: 1;
 }
+
+.features-container {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 2s ease-out;
+}
+
+.feature-icon-wrapper {
+    color: #83bca9;
+    margin-bottom: 25px;
+    background: white; /* Un toque de blanco sutil solo en el icono */
+    padding: 20px;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+    transition: transform 0.3s ease;
+}
+
+/* =========================================
+   Sección de Frase Final (Quote)
+   ========================================= */
+.quote-section {
+    padding: 140px 20px;
+    background-color: transparent; /* Unificado */
+    text-align: center;
+}
+/* Botón secundario estilizado */
+.btn-secondary {
+    display: inline-block; /* Importante para que tome el padding */
+    text-decoration: none; /* Quitamos el subrayado violeta */
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 300; /* Letra fina para coherencia visual */
+    color: #83bca9;
+    border: 1px solid #83bca9;
+    padding: 12px 35px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    margin-top: 20px;
+    transition: all 0.4s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #83bca9;
+    color: #faf9f6; /* El tono crema que elegimos para el fondo */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(131, 188, 169, 0.2);
+}
+.quote-content h3 {
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 200; 
+    font-style: italic;
+    font-size: 2.2rem;
+    color: #444;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+/* Contenedor del icono Lucide */
+.feature-icon-wrapper {
+    color: #83bca9;
+    margin-bottom: 25px;
+    background: white; /* El circulito blanco que resalta sobre el crema */
+    padding: 20px;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+    
+    /* Esta es la clave para que la animación sea fluida */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+
+/* Animación al pasar el mouse por la tarjeta completa */
+.feature-item:hover .feature-icon-wrapper {
+    transform: scale(1.15) translateY(-5px); /* Se agranda y sube un poquito */
+    background-color: #ffffff;
+    box-shadow: 0 10px 25px rgba(131, 188, 169, 0.15);
+    color: #6da795; /* El verde se vuelve un poquito más oscuro */
+}
+/* ... (resto de tus animaciones y media queries se mantienen) ... */

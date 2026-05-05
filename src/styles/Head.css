@@ -10,12 +10,16 @@
 body {
   /* Usamos una tipografía limpia para el cuerpo, dejando la especial para el logo */
   font-family: 'Roboto', sans-serif;
-  background-color: #fdfcf9; /* Blanco hueso/crema muy relajante */
+  background-color: #fdfff09a; /* Blanco hueso/crema muy relajante */
   color: #4a4a4a;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased; /* Suaviza la renderización de las letras */
 }
-
+.nav-container {
+    background-color: rgba(250, 249, 246, 0.8); /* El mismo tono global con transparencia */
+    backdrop-filter: blur(10px);
+    /* ... resto de tus estilos ... */
+}
 /* =========================================
    2. Header (Contenedor Principal)
    ========================================= */
@@ -36,7 +40,7 @@ header {
 /* Estilo para el icono de Lucide */
 .simbolo-logo {
   /* Usamos el mismo verde agua pero muy clarito */
-  color: #83bca9; 
+  color: #598073; 
   
   /* MARCA DE AGUA: Opacidad muy baja para que sea sutil */
   opacity: 0.2; 
@@ -59,7 +63,7 @@ header h1 {
   font-variation-settings: "wdth" 120;
   font-weight: 400; /* Fina y elegante */
   letter-spacing: 2px; /* Separación entre letras para estilo zen */
-  color: #83bca9; /* Verde agua suave que definimos antes */
+  color: #598073; /* Verde agua suave que definimos antes */
   cursor: default;
 }
 
@@ -116,5 +120,18 @@ nav h2:hover::after {
   width: 100%;
 }
 
+/* Estilo base para todos los links */
+.nav-link {
+    text-decoration: none;
+    color: #598073; /* Un gris suave */
+    transition: color 0.3s ease;
+    font-family: 'Roboto Flex', sans-serif;
+}
 
-
+/* Estilo que se activa mágicamente */
+.nav-link.active {
+    color: #83bca9; /* Tu verde agua de Ananda */
+    font-weight: 600;
+    border-bottom: 2px solid #7cb19f;
+    padding-bottom: 4px;
+}

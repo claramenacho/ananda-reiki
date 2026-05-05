@@ -1,0 +1,107 @@
+.footer {
+    background-color: #fdfcf9; /* Usamos el mismo crema de la sección de frase para dar continuidad */
+    padding: 100px 10% 40px; /* Mucho más aire arriba */
+    border-top: 1px solid #f0efeb;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr; /* Le damos más espacio a la marca */
+    gap: 80px; /* Más espacio entre columnas */
+    margin-bottom: 60px;
+}
+
+/* Marca y Logo */
+.footer-logo {
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 200; /* Más finita todavía */
+    color: #83bca9;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+
+.footer-brand p {
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 300;
+    color: #888;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+/* Iconos Sociales */
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-links a {
+    color: #83bca9;
+    transition: transform 0.3s ease;
+    opacity: 0.8;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+    opacity: 1;
+}
+
+/* Títulos de columnas */
+.footer-nav h4, .footer-info h4 {
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 500;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    margin-bottom: 30px;
+}
+
+/* Enlaces de navegación */
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-nav li {
+    margin-bottom: 15px;
+}
+
+.footer-nav a {
+    text-decoration: none;
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 300;
+    color: #777;
+    transition: color 0.3s;
+}
+
+.footer-nav a:hover {
+    color: #83bca9;
+}
+
+/* Información de contacto */
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #777;
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+/* Copyright inferior */
+.footer-bottom {
+    padding-top: 30px;
+    border-top: 1px solid #f0efeb;
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 300;
+    font-size: 0.85rem;
+    color: #bbb;
+}
