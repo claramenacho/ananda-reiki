@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const Contacto = require('./models/Contacto');
+const Turno = require('./models/Turno')
 
 const app = express();
 app.use(cors());
@@ -22,6 +23,16 @@ app.post('/api/contacto', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: 'No se pudo guardar el mensaje' });
   }
+});
+
+app.post('/api/turnos', async (req, res) => {
+    try {
+        const nuevoTurno = new Turno(req.body);
+        await nuevoTurno.save();
+        res.status(201).json({ message: '¡Turno agendado!'});
+    } catch (error) {
+        res.status(500).json({ error: 'No se guardo el turno' });
+    }
 });
 
 app.listen(5000, () => console.log('🚀 Servidor en puerto 5000'));

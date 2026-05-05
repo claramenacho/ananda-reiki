@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { Wind, Send, Sparkles } from 'lucide-react';
 import { sesionesData } from '../componentes/servicios.js';
 import { Footer } from '../componentes/Footer.jsx';
+import { ModalTurnos } from './ModalTurnos.jsx';
 import "../styles/session.css";
 
 // ... (tus imports iguales)
 
 export const Sessions = () => {
   const [seleccionada, setSeleccionada] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <>
@@ -65,7 +67,7 @@ export const Sessions = () => {
               </p>
 
               <div className="action-buttons">
-                <button className="btn-reserve">Consultar Turno</button>
+                <button className="btn-consultar"onClick={() => setShowModal(true)}>Consultar Turno</button>
                 <button className="btn-close-detail" onClick={() => setSeleccionada(null)}>
                   Cerrar
                 </button>
@@ -75,6 +77,7 @@ export const Sessions = () => {
         </div>
       )}
     </section>
+    {showModal && <ModalTurnos alCerrar={() => setShowModal(false)} />}
     <Footer />
     </>
   );

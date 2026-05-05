@@ -26,9 +26,9 @@ export const Footer = () => {
         <div className="footer-nav">
           <h4>Explorá</h4>
           <ul>
-            <li><Link to="/">Inicio</Link></li>
-            <li><Link to="/que-es-reiki">¿Qué es Reiki?</Link></li>
-            <li><Link to="/sesiones">Sesiones</Link></li>
+            <li><Link to="/inicio">Inicio</Link></li>
+            <li><Link to="/queesreiki">¿Qué es Reiki?</Link></li>
+            <li><Link to="/reiki">Sesiones</Link></li>
             <li><Link to="/contacto">Contacto</Link></li>
           </ul>
         </div>

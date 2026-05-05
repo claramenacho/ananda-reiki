@@ -14,11 +14,30 @@ export const Contacto = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Datos enviados:", formData);
-    alert("¡Gracias por tu mensaje! Te contactaré pronto.");
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Evita que la página se refresque
+    
+    try {
+        const respuesta = await fetch('http://localhost:5000/api/contacto', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+        });
+
+        if (respuesta.ok) {
+        alert("¡Gracias por tu mensaje! Te contactaré pronto.");
+        setFormData({ nombre: '', email: '', mensaje: '' }); // Limpia el formulario
+        } else {
+        alert("Hubo un error al enviar el mensaje.");
+        }
+    } catch (error) {
+        // Esto se ejecuta si el servidor está apagado o no hay internet
+        console.error("Error de conexión:", error);
+        alert("No se pudo conectar con el servidor.");
+    }
+    };
 
   return (
     <>

@@ -1,0 +1,197 @@
+/* --- ESTRUCTURA PRINCIPAL (EL FONDO) --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Fondo más suave para transmitir paz */
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px; /* Evita que el modal toque los bordes en móviles */
+}
+.form-group textarea {
+  height: 50px !important; /* Altura mínima para que entren 2 o 3 líneas */
+  resize: none !important;
+}
+
+/* --- EL CONTENEDOR (LA TARJETA) --- */
+.modal-content {
+  background: white !important;
+  padding: 2rem !important;
+  border-radius: 20px !important;
+
+  /* Forzamos el ancho para que no sea gigante en PC */
+  width: 380px !important; 
+  
+  /* Esto asegura que se centre y no se deforme */
+  margin: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 15px !important;
+
+  /* Sombra para despegarlo del fondo */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important;
+  max-height: 90vh !important; /* No puede medir más del 90% del alto de la pantalla */
+  overflow-y: auto !important; /* Si el contenido se pasa, habilita el scroll */
+}
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-content h2 {
+  color: #555;
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+/* --- FORMULARIO Y CAMPOS --- */
+.form-group {
+  margin-bottom: 0.8rem; /* Espacio reducido entre campos */
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+/* Inputs, Select y Textarea unificados */
+.form-group input, 
+.form-group select, 
+.form-group textarea,
+.react-datepicker__input-container input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #e2e2e2;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+  background-color: #fafafa;
+}
+
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+  border-color: #8fb4a9; /* El verde de Ananda */
+  background-color: #fff;
+}
+
+.form-group textarea {
+  height: 60px; /* Altura fija para que no se estire el modal */
+  resize: none;
+}
+
+/* --- AJUSTES ESPECÍFICOS DEL CALENDARIO --- */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker-popper {
+  z-index: 2000 !important;
+}
+
+/* Achicamos el calendario desplegable */
+.react-datepicker {
+  font-size: 0.75rem !important;
+  border: 1px solid #eee !important;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important;
+  border-radius: 8px !important;
+}
+
+.react-datepicker__header {
+  background-color: #f8fbfa !important;
+  padding: 4px 0 !important;
+}
+
+.react-datepicker__day, 
+.react-datepicker__day-name {
+  width: 1.6rem !important;
+  line-height: 1.6rem !important;
+  margin: 0.1rem !important;
+}
+
+.react-datepicker__day--selected {
+  background-color: #8fb4a9 !important;
+  border-radius: 50% !important;
+}
+
+/* --- BOTONES --- */
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.btn-confirmar {
+  background-color: #8fb4a9;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  flex: 1;
+}
+
+.btn-confirmar:hover { background-color: #7a9c92; }
+
+.btn-cancelar {
+  background: #f5f5f5;
+  border: none;
+  color: #888;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  flex: 1;
+}
+
+.btn-cancelar:hover { background: #eeeeee; }
+/* --- ESTILIZADO DE LA BARRA DE SCROLL (Solo para Chrome, Safari y Edge) --- */
+
+/* 1. Definimos el ancho de la barrita */
+.modal-content::-webkit-scrollbar {
+  width: 6px; /* Bien finita para que no moleste */
+}
+
+/* 2. El fondo por donde corre la barra */
+.modal-content::-webkit-scrollbar-track {
+  background: transparent; /* Invisible para que no ensucie el diseño */
+}
+
+/* 3. La parte que se mueve (el "pulgar") */
+.modal-content::-webkit-scrollbar-thumb {
+  background-color: rgba(143, 180, 169, 0.4); /* Tu verde Ananda con transparencia */
+  border-radius: 10px; /* Bordes redondeados para suavidad visual */
+}
+
+/* 4. Cuando pasás el mouse por encima de la barra */
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background-color: #8fb4a9; /* Se oscurece un poquito al tocarla */
+}
+
+/* --- AJUSTE EXTRA PARA FIREFOX --- */
+.modal-content {
+  scrollbar-width: thin; /* Barra fina */
+  scrollbar-color: #8fb4a9 transparent; /* Color del pulgar y fondo */
+}
