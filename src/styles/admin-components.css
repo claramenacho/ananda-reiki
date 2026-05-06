@@ -207,5 +207,101 @@
     border-radius: 8px;
     cursor: pointer;
 }
+/* admin-components.css */
+.ficha-layout { padding: 10px; }
 
+.ficha-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
 
+.paciente-titulo h1 { color: #444; margin: 0; }
+
+.dni-tag {
+    background: #eef7f4;
+    color: #83bca9;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.ficha-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 30px;
+}
+
+.info-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    margin-bottom: 20px;
+}
+
+.info-card h3 { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    color: #83bca9; 
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.box-nueva-sesion textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    margin: 15px 0;
+    font-family: inherit;
+}
+
+.tarjeta-sesion {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border-left: 4px solid #83bca9;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+
+.sesion-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #999;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+.byosen-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.byosen-grid input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.tabla-reiki {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.txt-hibiki {
+    font-size: 0.85rem;
+    color: #83bca9;
+    margin-top: 5px;
+}

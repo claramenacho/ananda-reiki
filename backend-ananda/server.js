@@ -72,6 +72,53 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASS  // Tu contraseña de aplicación
   }
 });
+// Ruta para agregar una nueva sesión al historial de un paciente
+app.patch('/api/pacientes/:id/nueva-sesion', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const nuevaSesion = req.body; // Aquí vienen las notas de la sesión
+
+        // Buscamos al paciente y "empujamos" (push) la sesión al array historial
+        const pacienteActualizado = await Paciente.findByIdAndUpdate(
+            id,
+            { $push: { historial: nuevaSesion } },
+            { new: true } // Para que nos devuelva el paciente con la sesión ya agregada
+        );
+
+        if (!pacienteActualizado) {
+            return res.status(404).json({ mensaje: "Paciente no encontrado" });
+        }
+
+        res.status(200).json({ mensaje: "Sesión registrada con éxito", paciente: pacienteActualizado });
+    } catch (error) {
+        console.error("Error al registrar sesión:", error);
+        res.status(500).json({ mensaje: "Error interno del servidor" });
+    }
+});
+// Ruta para actualizar los antecedentes (Historia Clínica Inicial)
+// Ruta para actualizar los antecedentes (Historia Clínica Inicial)
+// Agregamos /api/pacientes al principio para que coincida con el Frontend
+app.patch('/api/pacientes/:id/hc-inicial', async (req, res) => {
+    try {
+        const { antecedentes } = req.body;
+        
+        // Buscamos al paciente y actualizamos solo el objeto 'antecedentes'
+        const pacienteActualizado = await Paciente.findByIdAndUpdate(
+            req.params.id,
+            { $set: { antecedentes: antecedentes } },
+            { new: true } 
+        );
+
+        if (!pacienteActualizado) {
+            return res.status(404).json({ mensaje: "Paciente no encontrado" });
+        }
+
+        res.json(pacienteActualizado);
+    } catch (error) {
+        console.error("Error al guardar HC:", error);
+        res.status(500).json({ mensaje: "Error interno del servidor" });
+    }
+});
 // Ruta para OBTENER las consultas (la que te estaba faltando)
 app.get('/api/contacto', async (req, res) => {
     try {

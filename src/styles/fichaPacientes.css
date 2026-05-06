@@ -1,0 +1,262 @@
+/* Contenedor de la sesión */
+.box-nueva-sesion {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(131, 188, 169, 0.05);
+}
+
+.section-title {
+    color: #5a8f7d;
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    border-left: 4px solid #83bca9;
+    padding-left: 15px;
+}
+
+/* Estilo de la tabla de Chakras */
+.tabla-reiki {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px; /* Crea el efecto de filas separadas */
+    margin-top: 15px;
+}
+
+.tabla-reiki th {
+    text-align: left;
+    padding: 12px;
+    color: #8db3a6;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tabla-reiki td {
+    background: #f9fdfc;
+    padding: 12px;
+    border: 1px solid #f0f7f4;
+}
+
+.tabla-reiki td:first-child { border-radius: 10px 0 0 10px; font-weight: 600; color: #444; }
+.tabla-reiki td:last-child { border-radius: 0 10px 10px 0; }
+
+/* Estilo de los selects y inputs dentro de la tabla */
+.tabla-reiki select, .tabla-reiki input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #e0eadd;
+    border-radius: 6px;
+    background: white;
+    color: #666;
+}
+.byosen-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.byosen-grid input {
+    padding: 12px;
+    border: 1px solid #e0eadd;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: border-color 0.3s;
+}
+
+.byosen-grid input:focus {
+    outline: none;
+    border-color: #83bca9;
+    background: #f4fcfb;
+}
+.input-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 0.9rem;
+    color: #5a8f7d;
+    font-weight: 600;
+}
+
+.checkbox-group {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f0f7f4;
+    border-radius: 10px;
+}
+
+.switch-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    color: #444;
+}
+.btn-primario.full-width {
+    width: 100%;
+    margin-top: 30px;
+    padding: 15px;
+    background: #83bca9;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-primario.full-width:hover {
+    background: #6da694;
+    transform: translateY(-2px);
+}
+
+.btn-primario.full-width:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+.mapa-chakras-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    background: #fdfdfd;
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid #f0f7f4;
+}
+
+.silueta-svg {
+    max-height: 400px; /* Ajustá la altura según tu gusto */
+    width: auto;
+}
+
+/* Animación sutil cuando cambia el color del chakra */
+.silueta-svg circle {
+    transition: fill 0.5s ease;
+}
+
+.leyenda-mapa {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.historial-evolucion {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 2px dashed #e0eadd;
+}
+
+.sesion-card-pasada {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #f0f0f0;
+    transition: transform 0.2s;
+}
+
+.sesion-card-pasada:hover {
+    transform: scale(1.01);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+}
+
+.sesion-header-pasada {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #f9f9f9;
+    padding-bottom: 8px;
+}
+
+.sesion-fecha {
+    color: #83bca9;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.mini-resumen-chakras {
+    display: flex;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.mini-dot {
+    width: 10px;
+    height: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+}
+.mini-dot.armónico { background: #83bca9; }
+.mini-dot.bloqueado { background: #e57373; }
+.mini-dot.hiperactivo { background: #fff176; }
+
+.recuadro-recomendaciones-pasadas {
+    background: #f4fcfb;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    border-left: 3px solid #83bca9;
+}
+
+.badge-finalizado {
+    background: #444;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+.alerta-exito-hc {
+    background-color: #e8f5e9; /* Verde suave */
+    color: #2e7d32;
+    padding: 15px 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    border: 1px solid #c8e6c9;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.hc-bloqueada-container {
+    opacity: 0.9;
+}
+
+/* Para que el botón de guardar destaque pero mantenga la estética */
+.btn-primario {
+    background-color: #83bca9;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-primario:hover {
+    background-color: #6da694;
+    transform: translateY(-2px);
+}
