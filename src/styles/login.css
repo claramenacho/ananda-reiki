@@ -1,0 +1,85 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fdfcf9;
+}
+.login-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+.login-card h2 {
+    color: #4a4a4a;
+    margin: 20px 0 10px;
+}
+
+.login-card input {
+    width: 100%;
+    padding: 12px;
+    margin: 20px 0;
+    border: 1px solid #83bca944;
+    border-radius: 8px;
+    outline-color: #83bca9;
+}
+.btn-forgot-pass {
+    background: none;
+    border: none;
+    color: #547a6e; /* El verde de Ananda */
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-top: 15px;
+    opacity: 0.8;
+}
+.btn-forgot-pass {
+    background: none;
+    border: none;
+    color: #83bca9; /* Tu color de paz y bienestar */
+    font-size: 0.85rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 5px 10px;
+}
+.btn-forgot-pass:hover {
+    opacity: 1;
+}
+.btn-forgot-pass:hover {
+    text-decoration: underline;
+    color: #6a9b8a; /* Un tono más oscuro al pasar el mouse */
+}
+/* login.css */
+
+.btn-login {
+    background-color: #83bca9; /* Tu verde Ananda */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(131, 188, 169, 0.2);
+}
+
+.btn-login:hover {
+    background-color: #6da392;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(131, 188, 169, 0.3);
+}
+
+/* Para que el botón y el "Olvidaste tu contraseña" estén alineados */
+.login-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+}

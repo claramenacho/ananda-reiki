@@ -1,0 +1,203 @@
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+    background-color: #fdfcf9; /* Tu color crema suave */
+    font-family: 'Roboto Flex', sans-serif;
+}
+.admin-sidebar-footer {
+    margin-top: auto; /* Empuja los botones hacia el final del menú */
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+.admin-sidebar {
+    font-family: 'Roboto Flex', sans-serif;
+    width: 280px;
+    background: white;
+    border-right: 1px solid #e0eadd;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    position: sticky; /* Se queda quieto mientras haces scroll */
+    top: 0;
+    height: 100vh;
+}
+.admin-content {
+    flex: 1;
+    padding: 40px;
+    max-width: 1400px; /* Evita que se estire demasiado en monitores gigantes */
+}
+
+.btn-logout {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: #e57373;
+    border: 1px solid #ef9a9a55;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+.btn-logout:hover {
+    background: #ffebee;
+    border-color: #e57373;
+}
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background: transparent;
+    color: #666;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    margin-bottom: 8px;
+}
+
+.nav-item.activo {
+    background-color: #f0f7f4;
+    color: #83bca9;
+    font-weight: 600;
+}
+
+.nav-item:hover:not(.activo) {
+    background-color: #f9fdfc;
+    transform: translateX(5px);
+}
+/* Aseguramos que los inputs y botones también la hereden */
+.admin-layout input, 
+.admin-layout button, 
+.admin-layout select, 
+.admin-layout textarea {
+    font-family: 'Roboto Flex', sans-serif;
+}
+/* admin-layout.css */
+
+.sidebar-title {
+    color: #83bca9;
+    font-weight: 300;
+    margin: 0;
+}
+
+.sidebar-subtitle {
+    font-size: 0.8rem;
+    color: #999;
+    margin: 5px 0 0;
+}
+
+.admin-nav {
+    margin-top: 30px;
+}
+
+.content-title {
+    color: #4a4a4a;
+    font-weight: 400;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+}
+
+.icon-zen {
+    color: #83bca9;
+}
+/* En admin-layout.css */
+
+.sidebar-consultas {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(131, 188, 169, 0.05); /* Un toque del verde Ananda muy suave */
+    border-radius: 12px;
+}
+
+.sidebar-consultas h4 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #83bca9;
+    margin-bottom: 1rem;
+}
+
+.consulta-mini-card {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #f0f0f0;
+}
+
+.consulta-mini-card p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #444;
+    /* Para que el texto largo no rompa el menú */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.consulta-mini-card span {
+    display: block;
+    font-size: 0.7rem;
+    color: #999;
+    margin-top: 4px;
+}
+/* admin-layout.css */
+
+.sidebar-consultas {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.sidebar-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #83bca9; /* Tu verde Zen */
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.consultas-scroll {
+    max-height: 300px;
+    overflow-y: auto; /* Si hay muchas, podés scrollear solo ahí */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.consulta-mini-card {
+    background: #f9fdfc;
+    padding: 12px;
+    border-radius: 10px;
+    border-left: 3px solid #83bca944;
+}
+
+.consulta-nombre {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 4px;
+}
+
+.consulta-previo {
+    font-size: 0.8rem;
+    color: #777;
+    margin: 0;
+    /* Efecto de puntos suspensivos para que no se deforme el menú */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.consulta-fecha {
+    font-size: 0.7rem;
+    color: #bbb;
+    display: block;
+    margin-top: 5px;
+}

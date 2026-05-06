@@ -1,0 +1,215 @@
+/* admin.css */
+.admin-header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin-bottom: 30px;
+}
+
+.admin-container {
+    padding: 120px 5% 40px 5%; /* Aumentamos el padding superior (120px) */
+    background-color: #fdfcf9;
+    min-height: 100vh;
+    font-family: 'Roboto Flex', sans-serif;
+}
+
+.admin-container h2 {
+    color: #83bca9;
+    font-weight: 300;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.turno-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(131, 188, 169, 0.1);
+    border-color: #83bca9;
+}
+
+/* Detalles del Paciente */
+.turno-info h3 {
+    margin: 0 0 15px 0;
+    color: #4a4a4a;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.turno-info p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #7a7a7a;
+    font-size: 0.9rem;
+    margin: 8px 0;
+}
+
+.turno-msg {
+    margin-top: 15px !important;
+    padding: 10px;
+    background: #f9fdfc;
+    border-radius: 8px;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+/* Botones de Acción Administrativa */
+.turno-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-whatsapp {
+    flex: 2;
+    background-color: #83bca9;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: background 0.3s;
+}
+
+.btn-whatsapp:hover {
+    background-color: #6da392;
+}
+
+.btn-delete {
+    flex: 1;
+    background: white;
+    color: #e57373; /* Rojo suave para no ser agresivo */
+    border: 1px solid #ef9a9a55;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.btn-delete:hover {
+    background: #ffebee;
+    border-color: #e57373;
+}
+
+
+/* Contenedor del pie del formulario */
+.login-footer {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.recovery-section {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #83bca922;
+    animation: fadeIn 0.5s ease;
+}
+
+.recovery-txt {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.input-recovery {
+    background-color: #f0f7f4 !important; /* Un verde muy sutil */
+    border: 1px dashed #83bca9 !important;
+}
+
+.password-reveal {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* Mensajes de estado */
+.status-message {
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.status-message.error {
+    background-color: #fceaea;
+    color: #c0392b;
+    border: 1px solid #f5b7b1;
+}
+
+.status-message.success {
+    background-color: #e8f8f5;
+    color: #1b5e20;
+    border: 1px solid #83bca9;
+}
+
+/* Ajuste sutil para el icono */
+.icon-zen {
+    color: #83bca9;
+    margin-bottom: 10px;
+}
+
+.pacientes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.pacientes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+
+.info-principal h3 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.1rem;
+}
+
+.info-principal p {
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* Botón Ver Ficha */
+.btn-ver-ficha {
+    background-color: #f0f7f4;
+    color: #5a8f7d;
+    border: none;
+    padding: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-ver-ficha:hover {
+    background-color: #83bca9;
+    color: white;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

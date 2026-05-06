@@ -31,6 +31,9 @@ export const Head = () => {
                     <li>
                         <NavLink to="/contacto" className={activeClass}>Contacto</NavLink>
                     </li>
+                    <li>
+                        <NavLink to="/adminturnos" className={activeClass}>Iniciar Sesion</NavLink>
+                    </li>
                 </ul>
             </nav>
         </header>
