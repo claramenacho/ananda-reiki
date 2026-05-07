@@ -11,7 +11,13 @@ const User = require('./models/User');// Asegurate de tener el modelo en su arch
 
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5173', // Para que sigas pudiendo probar en tu PC
+    'https://ananda-reiki.vercel.app' // Reemplazá esto con tu link real de Vercel
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 
