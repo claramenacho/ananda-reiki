@@ -15,31 +15,32 @@ export const Contacto = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Evita que la página se refresque
+    e.preventDefault(); 
     
     try {
+        // Esta línea está perfecta, detecta el entorno
         const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-        const respuesta = await fetch('http://localhost:5000/api/contacto', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        
+        // ¡Aquí estaba el error! Cambiamos la URL fija por la variable baseURL
+        const respuesta = await fetch(`${baseURL}/api/contacto`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
         });
 
         if (respuesta.ok) {
-        alert("¡Gracias por tu mensaje! Te contactaré pronto.");
-        setFormData({ nombre: '', email: '', mensaje: '' }); // Limpia el formulario
+            alert("¡Gracias por tu mensaje! Te contactaré pronto.");
+            setFormData({ nombre: '', email: '', mensaje: '' }); 
         } else {
-        alert("Hubo un error al enviar el mensaje.");
+            alert("Hubo un error al enviar el mensaje.");
         }
     } catch (error) {
-        // Esto se ejecuta si el servidor está apagado o no hay internet
         console.error("Error de conexión:", error);
         alert("No se pudo conectar con el servidor.");
     }
-    };
-
+  };
   return (
     <>
       <div className="contacto-page">

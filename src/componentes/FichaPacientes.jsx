@@ -86,11 +86,14 @@ export const FichaPaciente = ({ paciente, onVolver, onActualizar }) => {
         setCargando(true);
         try {
             const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-            const res = await fetch(`http://localhost:5000/api/pacientes/${paciente._id}/nueva-sesion`, {
+            
+            // CAMBIO AQUÍ: Usamos baseURL y backticks ``
+            const res = await fetch(`${baseURL}/api/pacientes/${paciente._id}/nueva-sesion`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(nuevaSesion) 
             });
+            
             if (res.ok) {
                 onActualizar(); 
                 alert("Sesión guardada con éxito.");

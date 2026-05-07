@@ -19,12 +19,15 @@ export const AdminTurnos = () => {
         if (isAuth === 'true') {
             setAutorizado(true);
             
-            // Si está autorizado, cargamos todo de una
             const cargarTodo = async () => {
                 try {
+                    // 1. Definimos la base dinámica
+                    const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+                    
+                    // 2. Usamos baseURL en ambos fetch con backticks
                     const [resTurnos, resConsultas] = await Promise.all([
-                        fetch('http://localhost:5000/api/turnos'),
-                        fetch('http://localhost:5000/api/contacto')
+                        fetch(`${baseURL}/api/turnos`),
+                        fetch(`${baseURL}/api/contacto`)
                     ]);
 
                     const dataTurnos = await resTurnos.json();
