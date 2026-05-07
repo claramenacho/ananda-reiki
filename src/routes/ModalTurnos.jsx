@@ -31,17 +31,22 @@ export const ModalTurnos = ({ alCerrar }) => {
     };
 
     const verificarDisponibilidad = async (fechaSeleccionada) => {
-        try {
-            const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-            const fechaISO = fechaSeleccionada.toISOString().split('T')[0];
-            
-            const respuesta = await fetch(`${baseURL}/api/turnos/ocupados?fecha=${fechaISO}`);
-            const ocupados = await respuesta.json(); 
-            setHorariosOcupados(ocupados);
-        } catch (error) {
-            console.error("Error verificando disponibilidad:", error);
-        }
-    };
+      try {
+          const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+          
+          // Ajustamos la fecha para que no tenga horas/minutos locos
+          const año = fechaSeleccionada.getFullYear();
+          const mes = String(fechaSeleccionada.getMonth() + 1).padStart(2, '0');
+          const dia = String(fechaSeleccionada.getDate()).padStart(2, '0');
+          const fechaFormateada = `${año}-${mes}-${dia}`;
+          
+          const respuesta = await fetch(`${baseURL}/api/turnos/ocupados?fecha=${fechaFormateada}`);
+          const ocupados = await respuesta.json(); 
+          setHorariosOcupados(ocupados);
+      } catch (error) {
+          console.error("Error verificando disponibilidad:", error);
+      }
+  };
 
     const obtenerHorariosDisponibles = () => {
         const dia = datosTurno.fecha.getDay();
@@ -106,6 +111,14 @@ export const ModalTurnos = ({ alCerrar }) => {
                             className="input-custom"
                             required
                         />
+                    </div>
+                    <div className="form-group">
+                        <label>Tipo de Sesión</label>
+                        <select name="servicio" onChange={handleChange} required>
+                            <option value="Armonización Integral">Armonización Integral</option>
+                            <option value="Sesión de Reiki">Sesión de Reiki</option>
+                            <option value="Lectura de Oráculos">Lectura de Oráculos</option>
+                        </select>
                     </div>
 
                     <div className="form-group">

@@ -73,14 +73,9 @@ app.delete('/api/turnos/:id', async (req, res) => {
 // Ruta para verificar qué horarios están ocupados en una fecha específica
 app.get('/api/turnos/ocupados', async (req, res) => {
     try {
-        const { fecha } = req.query; // Recibimos la fecha que el paciente eligió
+        const { fecha } = req.query; // Recibe "2026-05-07"
         
-        if (!fecha) {
-            return res.status(400).json({ mensaje: "Falta la fecha" });
-        }
-
-        // Buscamos turnos que coincidan con esa fecha
-        // Importante: El nombre del campo debe ser fechaSolicitud para que coincida con tu base de datos
+        // Buscamos turnos que empiecen con esa misma fecha (ignorando la hora)
         const turnosOcupados = await Turno.find({
             fechaSolicitud: {
                 $gte: new Date(fecha + "T00:00:00.000Z"),
@@ -88,13 +83,11 @@ app.get('/api/turnos/ocupados', async (req, res) => {
             }
         });
 
-        // Extraemos solo los horarios (el campo 'preferencia') de esos turnos
-        const horariosNoDisponibles = turnosOcupados.map(t => t.preferencia);
-
-        res.status(200).json(horariosNoDisponibles);
+        // Devolvemos los horarios ya tomados
+        const ocupados = turnosOcupados.map(t => t.preferencia);
+        res.json(ocupados);
     } catch (error) {
-        console.error("Error al buscar horarios ocupados:", error);
-        res.status(500).json({ mensaje: "Error del servidor" });
+        res.status(500).json({ error: error.message });
     }
 });
 
