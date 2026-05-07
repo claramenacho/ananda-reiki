@@ -127,8 +127,16 @@ export const AdminTurnos = () => {
                             <div key={turno._id} className="turno-card">
                                 <div className="turno-info">
                                     <h3>{turno.nombre}</h3>
-                                    <p><Calendar size={16} className="icon-zen" /> {turno.fecha}</p>
-                                    <p><Clock size={16} className="icon-zen" /> {turno.preferenciaHoraria}</p>
+                                    {/* Fecha formateada */}
+                                    <p>
+                                        <Calendar size={16} className="icon-zen" /> 
+                                        {turno.fecha ? new Date(turno.fecha).toLocaleDateString('es-ES') : "Sin fecha"}
+                                    </p>
+                                    {/* Horario (preferencia) */}
+                                    <p>
+                                        <Clock size={16} className="icon-zen" /> 
+                                        {turno.preferencia || "Sin horario seleccionado"}
+                                    </p>
                                     <p><Mail size={16} className="icon-zen" /> {turno.email}</p>
                                 </div>
                                 <div className="turno-actions">
