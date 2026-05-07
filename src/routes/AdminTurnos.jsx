@@ -56,11 +56,15 @@ export const AdminTurnos = () => {
         if (window.confirm("¿Estás segura de que querés eliminar este turno?")) {
             try {
                 const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-                const respuesta = await fetch(`http://localhost:5000/api/turnos/${id}`, {
+                
+                // ¡Cambiamos la URL aquí!
+                const respuesta = await fetch(`${baseURL}/api/turnos/${id}`, {
                     method: 'DELETE',
                 });
+
                 if (respuesta.ok) {
                     setTurnos(turnos.filter(turno => turno._id !== id));
+                    alert("Turno eliminado correctamente"); // Un aviso siempre ayuda
                 }
             } catch (error) {
                 console.error("Error al conectar con el servidor", error);
