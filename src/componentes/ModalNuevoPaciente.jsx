@@ -27,6 +27,7 @@ export const ModalNuevoPaciente = ({ isOpen, onClose, onActualizar }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
             const res = await fetch('http://localhost:5000/api/pacientes/registrar', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

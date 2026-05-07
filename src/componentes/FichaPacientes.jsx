@@ -55,7 +55,8 @@ export const FichaPaciente = ({ paciente, onVolver, onActualizar }) => {
     const guardarHCInicial = async () => {
         setCargando(true);
         try {
-            const res = await fetch(`http://localhost:5000/api/pacientes/${paciente._id}/hc-inicial`, {
+            const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+            const res = await fetch(`${baseURL}/api/pacientes/${paciente._id}/hc-inicial`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ antecedentes: tempHC }) // Enviamos lo que escribiste
@@ -84,6 +85,7 @@ export const FichaPaciente = ({ paciente, onVolver, onActualizar }) => {
         e.preventDefault();
         setCargando(true);
         try {
+            const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
             const res = await fetch(`http://localhost:5000/api/pacientes/${paciente._id}/nueva-sesion`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },

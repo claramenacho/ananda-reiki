@@ -38,6 +38,7 @@ export const ModalTurnos = ({ alCerrar }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       const respuesta = await fetch('http://localhost:5000/api/turnos', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

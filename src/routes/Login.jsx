@@ -14,6 +14,7 @@ export const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try { // <-- Faltaba este try
+            const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
             const response = await fetch('http://localhost:5000/api/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -36,6 +37,7 @@ export const Login = () => {
     const handleSendEmail = async (e) => {
         e.preventDefault();
         try {
+            const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
             const response = await fetch('http://localhost:5000/api/auth/forgot-password', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

@@ -52,6 +52,7 @@ export const AdminTurnos = () => {
     const eliminarTurno = async (id) => {
         if (window.confirm("¿Estás segura de que querés eliminar este turno?")) {
             try {
+                const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
                 const respuesta = await fetch(`http://localhost:5000/api/turnos/${id}`, {
                     method: 'DELETE',
                 });
