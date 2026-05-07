@@ -126,18 +126,26 @@ export const AdminTurnos = () => {
                         {turnos.map(turno => (
                             <div key={turno._id} className="turno-card">
                                 <div className="turno-info">
+                                    {/* 1. NOMBRE */}
                                     <h3>{turno.nombre}</h3>
-                                    {/* Fecha formateada */}
-                                    <p>
-                                        <Calendar size={16} className="icon-zen" /> 
-                                        {turno.fecha ? new Date(turno.fecha).toLocaleDateString('es-ES') : "Sin fecha"}
-                                    </p>
-                                    {/* Horario (preferencia) */}
+                                    
+                                    {/* 2. MAIL */}
+                                    <p><Mail size={16} className="icon-zen" /> {turno.email}</p>
+
+                                    {/* 3. HORARIO (Combinando preferencia y mensaje) */}
                                     <p>
                                         <Clock size={16} className="icon-zen" /> 
-                                        {turno.preferencia || "Sin horario seleccionado"}
+                                        {turno.preferencia} {turno.mensaje ? `- ${turno.mensaje}` : ''}
                                     </p>
-                                    <p><Mail size={16} className="icon-zen" /> {turno.email}</p>
+
+                                    {/* 4. DIA (Usando el campo fechaSolicitud) */}
+                                    <p>
+                                        <Calendar size={16} className="icon-zen" /> 
+                                        {turno.fechaSolicitud ? new Date(turno.fechaSolicitud).toLocaleDateString('es-ES') : "Sin fecha"}
+                                    </p>
+
+                                    {/* 5. SERVICIO */}
+                                    <p className="turno-servicio-tag">{turno.servicio}</p>
                                 </div>
                                 <div className="turno-actions">
                                     <button className="btn-delete" onClick={() => eliminarTurno(turno._id)}>
