@@ -7,15 +7,46 @@ import '../styles/ModalTurnos.css';
 registerLocale('es', es);
 
 export const ModalTurnos = ({ alCerrar }) => {
-  
-  const [datosTurno, setDatosTurno] = useState({
-    nombre: '',
-    email: '',
-    preferencia: '',
-    mensaje: '',
-    fecha: new Date()
-  });
+    // 1. Estados actuales y el NUEVO estado para ocupados
+    const [horariosOcupados, setHorariosOcupados] = useState([]); // <--- AGREGAR ESTO
+    const [datosTurno, setDatosTurno] = useState({
+        nombre: '',
+        email: '',
+        preferencia: '',
+        mensaje: '',
+        fecha: new Date(),
+        servicio: 'Armonización Integral'
+    });
 
+    // 2. Definir los horarios permitidos (puedes ponerlo aquí o afuera)
+    const HORARIOS_POR_DIA = {
+        1: ["16:00", "17:00", "18:00", "19:00"], // Lunes
+        2: ["09:00", "10:00", "11:00"],           // Martes
+        4: ["09:00", "10:00", "11:00"]            // Jueves
+    };
+
+    // 3. LA NUEVA FUNCIÓN: verificarDisponibilidad
+    const verificarDisponibilidad = async (fechaSeleccionada) => {
+        try {
+            const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+            const fechaISO = fechaSeleccionada.toISOString().split('T')[0];
+            
+            const respuesta = await fetch(`${baseURL}/api/turnos/ocupados?fecha=${fechaISO}`);
+            const ocupados = await respuesta.json(); 
+            setHorariosOcupados(ocupados);
+        } catch (error) {
+            console.error("Error verificando disponibilidad:", error);
+        }
+    };
+
+    // 4. LA NUEVA FUNCIÓN: obtenerHorariosDisponibles
+    const obtenerHorariosDisponibles = () => {
+        const dia = datosTurno.fecha.getDay();
+        const todosLosHorarios = HORARIOS_POR_DIA[dia] || [];
+        return todosLosHorarios.filter(hora => !horariosOcupados.includes(hora));
+    };
+
+    // ... aquí siguen tus funciones handleChange y handleSubmit ...
   const handleChange = (e) => {
     if (e.target.name === 'fecha') {
         const fechaSeleccionada = new Date(e.target.value);
@@ -56,11 +87,7 @@ export const ModalTurnos = ({ alCerrar }) => {
       alert("Hubo un problema al conectar con el servidor.");
     }
   };
-  const esDiaLaboral = (date) => {
-    const day = date.getDay();
-    // Solo permite Lunes (1), Martes (2) y Jueves (4)
-    return day === 1 || day === 2 || day === 4;
-    };
+  
 
   return (
     <div className="modal-overlay">
@@ -92,22 +119,33 @@ export const ModalTurnos = ({ alCerrar }) => {
                 <DatePicker
                     locale="es"
                     selected={datosTurno.fecha}
-                    onChange={(date) => setDatosTurno({...datosTurno, fecha: date})}
+                    onChange={(date) => {
+                        // Actualizamos el estado y disparamos la búsqueda al backend
+                        setDatosTurno({...datosTurno, fecha: date, preferencia: ''});
+                        verificarDisponibilidad(date); 
+                    }}
                     filterDate={esDiaLaboral}
                     minDate={new Date()}
                     dateFormat="dd/MM/yyyy"
-                    placeholderText="Tocá para elegir"
-                    className="input-custom" // Luego le damos estilo en CSS
+                    className="input-custom"
                     required
                 />
             </div>
 
             <div className="form-group">
-                <label>Preferencia Horaria</label>
-                <select name="preferencia" onChange={handleChange} required>
-                <option value="">Seleccioná una opción</option>
-                <option value="Mañana">Mañana</option>
-                <option value="Tarde">Tarde</option>
+                <label>Horarios disponibles</label>
+                <select 
+                    name="preferencia" 
+                    value={datosTurno.preferencia} 
+                    onChange={handleChange} 
+                    required
+                >
+                    <option value="">Seleccioná un horario</option>
+                    {obtenerHorariosDisponibles().map((hora) => (
+                        <option key={hora} value={hora}>
+                            {hora} hs
+                        </option>
+                    ))}
                 </select>
             </div>
 
