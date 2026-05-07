@@ -26,10 +26,9 @@ export const AdminTurnos = () => {
                     
                     // 2. Usamos baseURL en ambos fetch con backticks
                     const [resTurnos, resConsultas] = await Promise.all([
-                        fetch(`${baseURL}/api/turnos`),
-                        fetch(`${baseURL}/api/contacto`)
+                        fetch(`${baseURL}/api/turnos`),   // <--- Verificá que diga /api/turnos
+                        fetch(`${baseURL}/api/contacto`)  // <--- Este es el que ya te funciona
                     ]);
-
                     const dataTurnos = await resTurnos.json();
                     const dataConsultas = await resConsultas.json();
 

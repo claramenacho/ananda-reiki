@@ -39,7 +39,9 @@ export const ModalTurnos = ({ alCerrar }) => {
     e.preventDefault();
     try {
       const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-      const respuesta = await fetch('http://localhost:5000/api/turnos', {
+      
+      // CAMBIÁ LA LÍNEA DE ABAJO: Usamos backticks `` y ${baseURL}
+      const respuesta = await fetch(`${baseURL}/api/turnos`, { 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(datosTurno)
@@ -47,7 +49,7 @@ export const ModalTurnos = ({ alCerrar }) => {
 
       if (respuesta.ok) {
         alert("¡Turno solicitado con éxito! Me contactaré pronto.");
-        alCerrar(); // Cerramos el modal automáticamente al terminar
+        alCerrar(); 
       }
     } catch (error) {
       console.error("Error:", error);
